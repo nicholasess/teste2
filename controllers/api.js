@@ -40,7 +40,7 @@ exports.listBebidas = function(req, res){
 }
 
 exports.listBebidasByTipo = function(req, res){
-	var idTipo = '546379618da4601d103b14bc';
+	var idTipo = req.params.id;
 		Drink.find({tipo:idTipo}).exec(function(err, result){
 			res.send({bebidas: result});
 		});		
