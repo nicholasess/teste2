@@ -1,0 +1,47 @@
+{% extends '../layout.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block head %}
+  {% parent %}
+  <link rel="stylesheet" href="">
+{% endblock %}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-12">
+		<h2>Cadastro de Bebidas</h2>	
+	</div>
+</div>
+<form method="post" action="/admin/bebida/cadastrar">
+<div class="row">
+	<div class="col-md-3">
+		<label>Descrição</label>
+		<input class="form-control" type="text" name="descricao" />
+	</div>
+	<div class="col-md-3">
+		<label>Preço de Custo</label>
+		<input class="form-control" type="text" name="custo" />
+	</div>
+	<div class="col-md-3">
+		<label>Quantidade</label>
+		<input class="form-control" type="text" name="qtd" />
+	</div>
+	<div class="col-md-3">
+		<label>Preço de Venda</label>
+		<input class="form-control" type="text" name="venda" />
+		<input class="form-control" type="hidden" name="tipo" value="{{tipo}}" />
+
+	</div>
+</div>
+<br/>
+<div class="row">
+	<div class="col-md-4">
+		<button class="btn btn-danger">Cadastrar</button>
+	</div>
+</div>
+</form>
+{% endblock %}

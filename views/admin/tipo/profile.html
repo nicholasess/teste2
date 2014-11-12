@@ -1,0 +1,56 @@
+{% extends '../layout.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block head %}
+  {% parent %}
+  <link rel="stylesheet" href="">
+{% endblock %}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12">
+		<h1>{{profile.descricao}}</h1>
+	</div>
+</div>
+<hr />
+<div class="row">
+	<div class="col-md-12">
+		<h2>Lista de Bebidas</h2>	
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<a href="/admin/bebida/cadastrar" class="btn btn-info">Cadastrar Bebida</a>
+	</div>
+</div>
+<hr />
+<div class="row">
+	<div class="col-md-12">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<td>Descrição</td>
+					<td>Preço de Custo</td>
+					<td>Preço de Venda</td>
+					<td>Quantidade</td>
+					<td></td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+				{% for item in drinks %}
+				<tr>
+					<td>{{item.descricao}}</td>
+					<td>{{item.precoCusto}}</td>
+					<td>{{item.precoVenda}}</td>
+					<td>{{item.quantidade}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>	
+	</div>
+</div>
+{% endblock %}

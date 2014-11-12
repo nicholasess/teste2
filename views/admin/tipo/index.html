@@ -1,0 +1,61 @@
+{% extends '../layout.html' %}
+
+{% block title %}Bebidas{% endblock %}
+
+{% block head %}
+  {% parent %}
+  <link rel="stylesheet" href="/css/style.css">
+{% endblock %}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+<br/><br/>
+<div class="row">
+	<div class="col-md-12">
+		<h2>Tipos de Bebidas/Combos</h2>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<a id="cadastrar_tipo" href="#" class="btn btn-success">Cadastrar Tipos</a>
+	</div>
+</div>
+<br/>
+<div class="row" id="painel-tipo">
+	<form action="/admin/tipo/cadastrar" method="post">
+	<div class="col-md-6">
+			<label>Descrição do Tipo</label>
+			<input class="form-control" type="text" name="descricao" />			
+	</div>
+	<div class="col-md-2">
+			<input class="btn btn-info btn-block 20px" value="Cadastrar" type="submit"  />
+	</div>
+	</form>
+</div>
+<br/>
+<div class="row">
+	<div class="col-md-12">
+		<table class="table table-bordered">
+	<thead>
+		<tr>
+			<td>Descrição</td>
+			<td>Qtd Itens</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in tipos %}
+			<tr>
+				<td>{{item.descricao}}</td>
+				<td></td>
+				<td><a href="/admin/tipo/{{item.id}}" class="btn btn-info">Perfil</a></td>
+				<td><a href="#" class="btn btn-primary">Excluir</a></td>
+			</tr>
+			{% endfor%}
+	</tbody>
+</table>
+	</div>
+</div>
+{% endblock %}

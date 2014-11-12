@@ -6,3 +6,12 @@ body {
 a {
   color: #00B7FF;
 }
+
+#painel-tipo{
+	display: none;
+}
+
+.20px{
+	margin-top: 40px;
+}
+

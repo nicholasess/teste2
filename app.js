@@ -2,11 +2,11 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session')
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var index = require('./routes/index');
 var admin = require('./routes/admin');
 var api = require('./routes/api');
 
@@ -28,8 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 swig.setDefaults({ cache: false });
 
-app.use('/', routes);
-app.use('/users', users);
+app.use('/', index);
 app.use('/admin', admin);
 app.use('/api', api);
 
@@ -63,6 +62,12 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+
+mongoose.connect("localhost:27017/bebae");
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Erro de conexão ao DB!!!'));
+db.once('open', function callback () {console.log('Conectado ao mongodb.');});
+
 
 
 module.exports = app;
