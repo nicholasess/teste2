@@ -28,7 +28,6 @@ exports.tipo_perfil = function(req, res, next){
 	req.session.tipo = req.params.id;
 	Type.findOne({_id: req.params.id}).exec(function(err, result){
 		Drink.find({tipo:result._id}).populate('tipo').exec(function(err, result2){
-			console.log('bebidas', result2);
 			res.render('admin/tipo/profile', {profile: result, drinks: result2});		
 		});		
 	});
@@ -40,7 +39,6 @@ exports.tipo_salvar = function(req, res){
 	}
 	var novo_tipo = new Type(data);
 	novo_tipo.save(function(err, result){
-		console.log(result);
 		res.redirect('/admin/tipo/index');
 	});
 }
@@ -51,7 +49,6 @@ exports.tipo_deletar = function(req, res){
 
 exports.bebida_cadastrar = function(req, res){
 	var tipo = req.session.tipo;
-	console.log(tipo);
 	res.render('admin/bebida/cadastrar', {tipo: tipo});		
 }
 
@@ -63,11 +60,9 @@ exports.bebida_save = function(req, res, next){
 		precoVenda: req.body.venda || '',
 		quantidade: req.body.qtd || 0
 	}
-	console.log(data);
 	var tipo = new Drink(data);
 	tipo.save(function(err, result){
 		if(err) console.error(err);
-		console.log('bebida salva',result);
 		res.redirect('/admin/tipo/'+req.body.tipo);
 	});	
 }
