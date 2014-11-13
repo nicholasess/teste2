@@ -1,5 +1,7 @@
 var User = require('../models/user'),
-	Drink = require('../models/bebida');
+	Drink = require('../models/bebida'),
+	Type = require('../models/tipo');
+
 exports.user = function(req, res){
 	User.find().exec(function(err, result){
 		res.send(result);
@@ -44,5 +46,10 @@ exports.listBebidasByTipo = function(req, res){
 		Drink.find({tipo:idTipo}).exec(function(err, result){
 			res.send({bebidas: result});
 		});		
-	
+}
+
+exports.listTipos = function(req, res){
+	Type.find().exec(function(err, result){
+		res.send({tipos:result});
+	});
 }

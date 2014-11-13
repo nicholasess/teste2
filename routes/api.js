@@ -28,7 +28,7 @@ router.route('/pedido').get(function(req, res){
 
 router.get('/bebidas', api.listBebidas);
 router.get('/bebidas/list/:id', api.listBebidasByTipo);
-
+router.get('/tipo', api.listTipos);
 
 module.exports = router;
 
